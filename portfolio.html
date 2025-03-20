@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Tuyishime | Full-Stack Developer</title>
+    <style>
+        :root {
+            --primary: #1a73e8; /* Slightly darker blue */
+            --primary-dark: #1557b0;
+            --secondary: #34a853; /* Green accent */
+            --accent: #8b5cf6;
+            --light: #ffffff;
+            --dark: #1f2937;
+            --text: #374151;
+            --text-light: #6b7280;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --glass: rgba(255, 255, 255, 0.8);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        h1 { font-size: 2.5rem; }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        a:hover { color: var(--primary-dark); }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 2rem;
+            margin: 0 auto;
+        }
+        section { padding: 6rem 0; }
+        section:nth-child(odd) { background-color: #f9fafb; }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--glass);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+        .nav-link {
+            margin-left: 2rem;
+            font-weight: 500;
+            color: var(--text);
+            transition: var(--transition);
+        }
+        .nav-link:hover { color: var(--primary); }
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text);
+            margin: 5px;
+            transition: var(--transition);
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(139, 92, 246, 0.9) 100%);
+            color: gray;
+            overflow: hidden;
+            padding: 2rem;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1200x800') center/cover no-repeat;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        .hero-content { max-width: 700px; }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .hero-buttons { display: flex; gap: 1rem; }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+        }
+        .btn-primary:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .profile-img {
+            width: 80%;
+            border-radius: 160px;
+            box-shadow: var(--shadow);
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        .skill-tag {
+            background-color: var(--light);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--primary);
+        }
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .experience-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .experience-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .education-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .education-year {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .project-content { padding: 1.5rem; }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .project-tag {
+            background-color: var(--light);
+            color: var(--text);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--primary);
+        }
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        .contact-form { display: grid; gap: 1.5rem; }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .form-input {
+            padding: 0.75rem;
+            border: 1px solid var(--text-light);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--light);
+            color: var(--text);
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        .form-input::placeholder {
+            color: var(--text-light);
+            opacity: 0.7;
+        }
+        .form-input:invalid {
+            border-color: #ff6b6b; /* Red for invalid inputs */
+        }
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        .social-icon:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (max-width: 992px) {
+            .about-content { grid-template-columns: 1fr; }
+            .contact-container { grid-template-columns: 1fr; }
+            .experience-grid, .education-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-list {
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 60%;
+                height: calc(100vh - 60px);
+                background-color: var(--light);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in;
+                box-shadow: var(--shadow);
+            }
+            .nav-list.active { transform: translateX(0); }
+            .nav-link { margin: 1rem 0; }
+            .burger { display: block; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; gap: 1rem; }
+            .btn { width: 100%; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .hero h1 { font-size: 2rem; }
+            section { padding: 4rem 0; }
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Eric Tuyishime</div>
+            <ul class="nav-list">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </nav>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm Eric Tuyishime</h1>
+                <p>Full-Stack Developer | Telecommunications & ICT Specialist | Based in Kigali, Rwanda</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-outline">View My Work</a>
+                    <a href="https://eu.docworkspace.com/d/sIAPQs9aAAuK98r4G" download class="btn btn-primary">Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="profile-image">
+                    <img src="Eric photo.jpg" alt="Eric Tuyishime" class="profile-img">
+                </div>
+                <div class="about-text">
+                    <p>Hello! I'm Eric Tuyishime, a passionate Full-Stack Developer and Telecommunications Specialist with expertise in front-end development, Python programming, and network configuration. I thrive on solving complex problems and delivering innovative solutions.</p>
+                    <p>With a strong foundation in Computer Science and hands-on experience in web development and ICT solutions, I aim to contribute to cutting-edge projects that drive technological advancement.</p>
+                    <h3>Skills</h3>
+                    <div class="skills">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="experience">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card fade-in">
+                    <p class="experience-date">Aug 2022 - Present</p>
+                    <h3 class="experience-title">Telecommunications & Radio Link Configuration</h3>
+                    <p class="experience-company">Havilah Engineering Group, Kigali</p>
+                    <p>Configured and maintained radio link systems, ensuring optimal performance and reliability. Collaborated with cross-functional teams to deliver ICT solutions for clients.</p>
+                </div>
+                <div class="experience-card fade-in">
+                    <p class="experience-date">Jan 2021 - Jul 2022</p>
+                    <h3 class="experience-title">ICT Support Specialist</h3>
+                    <p class="experience-company">Tech Solutions Ltd, Kigali</p>
+                    <p>Provided technical support and troubleshooting for network and software issues. Assisted in the deployment of ICT infrastructure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-card fade-in">
+                    <p class="education-year">2020 - 2024</p>
+                    <h3>Bachelor of Computer Science</h3>
+                    <p>University of Rwanda</p>
+                    <p>Relevant Coursework: Advanced Web Development, Software Engineering, Database Systems, Telecommunication Networks, AI & Machine Learning.</p>
+                </div>
+                <div class="education-card fade-in">
+                    <p class="education-year">2017 - 2019</p>
+                    <h3>Advanced Level Certificate</h3>
+                    <p>GS Saint Espirit Mushaka</p>
+                    <p>Focus: Mathematics, Economics, and Computer Science.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <!-- Advanced Portfolio Website -->
+                <div class="project-card fade-in">
+                    <img src="https://via.placeholder.com/600x400" alt="Advanced Portfolio Website" class="project-img">
+                    <div class="project-content">
+                        <h3>Advanced Portfolio Website</h3>
+                        <p>Designed a professional portfolio showcasing projects, skills, and a multilingual language switcher (English, French, Spanish, Kinyarwanda). Implemented SEO optimization for higher search engine visibility.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React.js</span>
+                            <span class="project-tag">Tailwind CSS</span>
+                            <span class="project-tag">TypeScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-Time Messaging Application -->
+                <div class="project-card fade-in">
+                    <img src="https://via.placeholder.com/600x400" alt="Real-Time Messaging Application" class="project-img">
+                    <div class="project-content">
+                        <h3>Real-Time Messaging Application</h3>
+                        <p>Developed a real-time messaging app with features like user authentication, personalized chats, and typing indicators. Integrated a WebSocket API for seamless real-time communication.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React.js</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Telecommunications Network Simulator -->
+                <div class="project-card fade-in">
+                    <img src="https://via.placeholder.com/600x400" alt="Telecommunications Network Simulator" class="project-img">
+                    <div class="project-content">
+                        <h3>Telecommunications Network Simulator</h3>
+                        <p>Designed a multi-layered network topology using Cisco Packet Tracer, implementing QoS, redundancy, and efficient routing protocols. Configured VPNs and firewalls to enhance network security.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Cisco Packet Tracer</span>
+                            <span class="project-tag">GNS3</span>
+                            <span class="project-tag">Networking</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Online TV Streaming Platform -->
+                <div class="project-card fade-in">
+                    <img src="https://via.placeholder.com/600x400" alt="Online TV Streaming Platform" class="project-img">
+                    <div class="project-content">
+                        <h3>Online TV Streaming Platform</h3>
+                        <p>Built an online platform with features for video streaming, user subscriptions, and admin controls. Integrated payment gateway APIs for secure transactions.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React.js</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">MongoDB</span>
+                            <span class="project-tag">Stripe API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI-Powered Suggestion System -->
+                <div class="project-card fade-in">
+                    <img src="https://via.placeholder.com/600x400" alt="AI-Powered Suggestion System" class="project-img">
+                    <div class="project-content">
+                        <h3>AI-Powered Suggestion System</h3>
+                        <p>Developed a system for user feedback analysis using machine learning models. Incorporated sentiment analysis to classify and respond to user suggestions automatically.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">TensorFlow</span>
+                            <span class="project-tag">React.js</span>
+                            <span class="project-tag">Flask</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gaming App -->
+                <div class="project-card fade-in">
+                    <img src="https://via.placeholder.com/600x400" alt="Gaming App" class="project-img">
+                    <div class="project-content">
+                        <h3>Gaming App</h3>
+                        <p>Created a gaming app using Unity Hub, designed to be interactive and fun for children.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Unity Hub</span>
+                            <span class="project-tag">Game Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>erictuyishime574@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+250 783 687 408</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Kigali, Rwanda</p>
+                        </div>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://github.com/TUYISHIMEEriccyber" class="social-icon" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/tuyishime-eric-66a518273" class="social-icon" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/yourusername" class="social-icon" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="Your Name" required>
+                        <span class="error-message" id="name-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="Your Email" required>
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-input" placeholder="Subject" required>
+                        <span class="error-message" id="subject-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" class="form-input" placeholder="Your Message" required></textarea>
+                        <span class="error-message" id="message-error"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submit-btn" disabled>
+                        <span id="submit-text">Send Message</span>
+                        <div class="loading-spinner" id="loading-spinner"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Eric Tuyishime. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-list');
+        const navLinks = document.querySelectorAll('.nav-link');
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+            burger.classList.toggle('toggle');
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                }
+                const target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({
+                    top: target.offsetTop - 60,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        const fadeElements = document.querySelectorAll('.fade-in');
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        checkFade();
+        window.addEventListener('scroll', checkFade);
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.05)';
+            }
+        });
+
+        // Contact Form Functionality
+        const contactForm = document.querySelector('.contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const submitText = document.getElementById('submit-text');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const subjectInput = document.getElementById('subject');
+        const messageInput = document.getElementById('message');
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const subjectError = document.getElementById('subject-error');
+        const messageError = document.getElementById('message-error');
+
+        // Enable/Disable Submit Button
+        function validateForm() {
+            if (nameInput.value && emailInput.value && subjectInput.value && messageInput.value) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        }
+
+        nameInput.addEventListener('input', validateForm);
+        emailInput.addEventListener('input', validateForm);
+        subjectInput.addEventListener('input', validateForm);
+        messageInput.addEventListener('input', validateForm);
+
+        // Form Submission
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Show Loading Spinner
+            submitText.style.display = 'none';
+            loadingSpinner.style.display = 'block';
+            submitBtn.disabled = true;
+
+            // Simulate API Call
+            setTimeout(() => {
+                // Hide Loading Spinner
+                submitText.style.display = 'inline';
+                loadingSpinner.style.display = 'none';
+                submitBtn.disabled = false;
+
+                // Show Success Message
+                alert('Message sent successfully!');
+                contactForm.reset();
+            }, 2000);
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
