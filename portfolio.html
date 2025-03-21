@@ -312,7 +312,8 @@
         }
         .form-input {
             padding: 0.75rem;
-            border: 1px solid var(--text-light);
+            border-color: #ccc;
+            border-width: 1;
             border-radius: 4px;
             font-family: inherit;
             font-size: 1rem;
@@ -328,9 +329,6 @@
         .form-input::placeholder {
             color: var(--text-light);
             opacity: 0.7;
-        }
-        .form-input:invalid {
-            border-color: #ff6b6b; /* Red for invalid inputs */
         }
         .social-icons {
             display: flex;
@@ -414,10 +412,22 @@
             height: 30px;
             animation: spin 1s linear infinite;
             margin: 0 auto;
+            display: none;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        #submit-btn:disabled{
+            background-color: #c0cee1;
+            cursor: not-allowed;
+            color: white;
+        }
+        #submit-btn{
+            background-color: #1a73e8;
+            color:  white;
+            font-weight: bold;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -448,7 +458,7 @@
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Get In Touch</a>
                     <a href="#projects" class="btn btn-outline">View My Work</a>
-                    <a href="https://eu.docworkspace.com/d/sIAPQs9aAAuK98r4G" download class="btn btn-primary">Download CV</a>
+                    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:216b11d7-fe39-4a47-8cf9-d767b95d6b5f" download class="btn btn-primary">Download CV</a>
                 </div>
             </div>
         </div>
@@ -473,6 +483,18 @@
                         <span class="skill-tag">AWS</span>
                         <span class="skill-tag">Docker</span>
                         <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Tailwindcss</span>
+                        <span class="skill-tag">React vite</span>
+                        <span class="skill-tag">Mysql</span>
+                        <span class="skill-tag">Mini-link craft</span>
+                        <span class="skill-tag">Moshell</span>
+                        <span class="skill-tag">typescript</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">Radio Links</span>
+                        <span class="skill-tag">Baseband</span>
+                        <span class="skill-tag">Microwave</span>
+                        <span class="skill-tag">Packet tracer</span>
                     </div>
                 </div>
             </div>
@@ -502,13 +524,13 @@
             <h2>Education</h2>
             <div class="education-grid">
                 <div class="education-card fade-in">
-                    <p class="education-year">2020 - 2024</p>
+                    <p class="education-year">2023 - Present</p>
                     <h3>Bachelor of Computer Science</h3>
                     <p>University of Rwanda</p>
                     <p>Relevant Coursework: Advanced Web Development, Software Engineering, Database Systems, Telecommunication Networks, AI & Machine Learning.</p>
                 </div>
                 <div class="education-card fade-in">
-                    <p class="education-year">2017 - 2019</p>
+                    <p class="education-year">2019 - 2022</p>
                     <h3>Advanced Level Certificate</h3>
                     <p>GS Saint Espirit Mushaka</p>
                     <p>Focus: Mathematics, Economics, and Computer Science.</p>
@@ -522,7 +544,7 @@
             <div class="projects-grid">
                 <!-- Advanced Portfolio Website -->
                 <div class="project-card fade-in">
-                    <img src="https://via.placeholder.com/600x400" alt="Advanced Portfolio Website" class="project-img">
+                    <img src=" " alt="Advanced Portfolio Website" class="project-img">
                     <div class="project-content">
                         <h3>Advanced Portfolio Website</h3>
                         <p>Designed a professional portfolio showcasing projects, skills, and a multilingual language switcher (English, French, Spanish, Kinyarwanda). Implemented SEO optimization for higher search engine visibility.</p>
@@ -536,7 +558,7 @@
 
                 <!-- Real-Time Messaging Application -->
                 <div class="project-card fade-in">
-                    <img src="https://via.placeholder.com/600x400" alt="Real-Time Messaging Application" class="project-img">
+                    <img src="" alt="Real-Time Messaging Application" class="project-img">
                     <div class="project-content">
                         <h3>Real-Time Messaging Application</h3>
                         <p>Developed a real-time messaging app with features like user authentication, personalized chats, and typing indicators. Integrated a WebSocket API for seamless real-time communication.</p>
@@ -550,7 +572,7 @@
 
                 <!-- Telecommunications Network Simulator -->
                 <div class="project-card fade-in">
-                    <img src="https://via.placeholder.com/600x400" alt="Telecommunications Network Simulator" class="project-img">
+                    <img src="" alt="Telecommunications Network Simulator" class="project-img">
                     <div class="project-content">
                         <h3>Telecommunications Network Simulator</h3>
                         <p>Designed a multi-layered network topology using Cisco Packet Tracer, implementing QoS, redundancy, and efficient routing protocols. Configured VPNs and firewalls to enhance network security.</p>
@@ -564,7 +586,7 @@
 
                 <!-- Online TV Streaming Platform -->
                 <div class="project-card fade-in">
-                    <img src="https://via.placeholder.com/600x400" alt="Online TV Streaming Platform" class="project-img">
+                    <img src="" alt="Online TV Streaming Platform" class="project-img">
                     <div class="project-content">
                         <h3>Online TV Streaming Platform</h3>
                         <p>Built an online platform with features for video streaming, user subscriptions, and admin controls. Integrated payment gateway APIs for secure transactions.</p>
@@ -579,7 +601,7 @@
 
                 <!-- AI-Powered Suggestion System -->
                 <div class="project-card fade-in">
-                    <img src="https://via.placeholder.com/600x400" alt="AI-Powered Suggestion System" class="project-img">
+                    <img src="" alt="AI-Powered Suggestion System" class="project-img">
                     <div class="project-content">
                         <h3>AI-Powered Suggestion System</h3>
                         <p>Developed a system for user feedback analysis using machine learning models. Incorporated sentiment analysis to classify and respond to user suggestions automatically.</p>
@@ -594,7 +616,7 @@
 
                 <!-- Gaming App -->
                 <div class="project-card fade-in">
-                    <img src="https://via.placeholder.com/600x400" alt="Gaming App" class="project-img">
+                    <img src="" alt="Gaming App" class="project-img">
                     <div class="project-content">
                         <h3>Gaming App</h3>
                         <p>Created a gaming app using Unity Hub, designed to be interactive and fun for children.</p>
@@ -634,43 +656,47 @@
                         </div>
                     </div>
                     <div class="social-icons">
-                        <a href="https://github.com/TUYISHIMEEriccyber" class="social-icon" target="_blank">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/TUYISHIMEEriccyber" class="social-icon" target="_blank" style="margin: 8px;">
+                            <i class="fab fa-github">Github</i>
                         </a>
-                        <a href="https://linkedin.com/in/tuyishime-eric-66a518273" class="social-icon" target="_blank">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/tuyishime-eric-66a518273" class="social-icon" target="_blank" style="margin: 8px;">
+                            <i class="fab fa-linkedin"> Linkedin</i>
                         </a>
-                        <a href="https://twitter.com/yourusername" class="social-icon" target="_blank">
-                            <i class="fab fa-twitter"></i>
+                        <a href="https://twitter.com/yourusername" class="social-icon" target="_blank" style="margin: 8px;">
+                            <i class="fab fa-twitter">Twitter</i>
                         </a>
                     </div>
                 </div>
+                <form id="submitForm">
                 <div class="contact-form">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" class="form-input" placeholder="Your Name" required>
-                        <span class="error-message" id="name-error"></span>
+                        <input type="text" id="name" class="form-input" placeholder="Your Name">
+                        <p class="error-message" id="name-error"></p>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" class="form-input" placeholder="Your Email" required>
-                        <span class="error-message" id="email-error"></span>
+                        <input type="email" id="email" class="form-input" placeholder="Your Email">
+                        <p class="error-message" id="email-error"></p>
                     </div>
                     <div class="form-group">
                         <label for="subject">Subject</label>
-                        <input type="text" id="subject" class="form-input" placeholder="Subject" required>
-                        <span class="error-message" id="subject-error"></span>
+                        <input type="text" id="subject" class="form-input" placeholder="Subject">
+                        <p class="error-message" id="subject-error"></p>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" rows="5" class="form-input" placeholder="Your Message" required></textarea>
-                        <span class="error-message" id="message-error"></span>
+                        <textarea id="message" rows="5" class="form-input" placeholder="Your Message"></textarea>
+                        <p class="error-message" id="message-error"></p>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="submit-btn" disabled>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">
                         <span id="submit-text">Send Message</span>
-                        <div class="loading-spinner" id="loading-spinner"></div>
+                        <div class="loading-spinner" id="loading-spinner" style="color: white;"></div>
                     </button>
+                    <p id="done" style="color: green;"></p>
+                    
                 </div>
+                </form>
             </div>
         </div>
     </section>
@@ -729,55 +755,203 @@
         });
 
         // Contact Form Functionality
+        const Form = document.getElementById("submitForm");
         const contactForm = document.querySelector('.contact-form');
         const submitBtn = document.getElementById('submit-btn');
         const submitText = document.getElementById('submit-text');
         const loadingSpinner = document.getElementById('loading-spinner');
-        const nameInput = document.getElementById('name');
-        const emailInput = document.getElementById('email');
-        const subjectInput = document.getElementById('subject');
-        const messageInput = document.getElementById('message');
         const nameError = document.getElementById('name-error');
         const emailError = document.getElementById('email-error');
         const subjectError = document.getElementById('subject-error');
         const messageError = document.getElementById('message-error');
+        const done = document.getElementById('done');
 
-        // Enable/Disable Submit Button
-        function validateForm() {
-            if (nameInput.value && emailInput.value && subjectInput.value && messageInput.value) {
+        submitBtn.disabled = true;
+        document.addEventListener('DOMContentLoaded', function() {
+        const Form = document.getElementById("submitForm");
+        Form.addEventListener('input', () => {
+            const nameInput = document.getElementById('name').value.trim();
+            const emailInput = document.getElementById('email').value.trim();
+            const subjectInput = document.getElementById('subject').value.trim();
+            const messageInput = document.getElementById('message').value.trim();
+        
+            if (nameInput && emailInput && subjectInput && messageInput) {
                 submitBtn.disabled = false;
-            } else {
+                loadingSpinner.style.display = 'none';
+                submitText.style.display = 'block';
+                nameError.textContent = '';
+                document.getElementById('name').style.borderColor = '#ccc';
+                document.getElementById('email').style.borderColor = '#ccc';
+                document.getElementById('subject').style.borderColor = '#ccc';
+                document.getElementById('message').style.borderColor = '#ccc';
+                emailError.textContent = '';
+                subjectError.textContent = '';
+                messageError.textContent = '';
+                nameError.style.display= 'none';
+            } else if(!messageInput || !subjectInput || !emailInput || !nameInput) {
+                submitBtn.disabled = true;
+                loadingSpinner.style.display = 'none';
+                submitText.style.display = 'block';
+            }
+        });})
+
+        document.addEventListener('DOMContentLoaded', function() {
+        const Form = document.getElementById("submitForm");
+        Form.addEventListener('submit', function(event){
+            event.preventDefault();
+            const nameInput = document.getElementById('name').value.trim();
+            const emailInput = document.getElementById('email').value.trim();
+            const subjectInput = document.getElementById('subject').value.trim();
+            const messageInput = document.getElementById('message').value.trim();
+            const done = document.getElementById('done');
+            loadingSpinner.style.display = 'block';
+            if(submitText.style.display === 'block'){
+                loadingSpinner.style.display = 'none';
                 submitBtn.disabled = true;
             }
-        }
-
-        nameInput.addEventListener('input', validateForm);
-        emailInput.addEventListener('input', validateForm);
-        subjectInput.addEventListener('input', validateForm);
-        messageInput.addEventListener('input', validateForm);
-
-        // Form Submission
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            // Show Loading Spinner
-            submitText.style.display = 'none';
-            loadingSpinner.style.display = 'block';
-            submitBtn.disabled = true;
-
-            // Simulate API Call
-            setTimeout(() => {
-                // Hide Loading Spinner
-                submitText.style.display = 'inline';
+            else if(submitText.style.display == 'none'){
                 loadingSpinner.style.display = 'none';
                 submitBtn.disabled = false;
+            }
+            else if(submitBtn.disabled === false){
+                loadingSpinner.style.display = 'none';
+                submitText.style.display = 'block';
+            }
+             if(!nameInput){
+                nameError.textContent = 'This field is needed';
+                document.getElementById('name').style.borderColor = 'red';
+                document.getElementById('email').style.borderColor = '#ccc';
+                document.getElementById('subject').style.borderColor = '#ccc';
+                document.getElementById('message').style.borderColor = '#ccc';
+                emailError.textContent = '';
+                subjectError.textContent = '';
+                messageError.textContent = '';
+                nameError.style.display= 'block';
+                nameError.style.color = 'red';
+                submitBtn.disabled = true;
+                loadingSpinner.style.display = 'none';
+                submitText.style.display = 'block';
+                return;
+            }
+            else if(!emailInput){
+                nameError.textContent = '';
+                document.getElementById('name').style.borderColor = '#ccc';
+                document.getElementById('email').style.borderColor = 'red';
+                document.getElementById('subject').style.borderColor = '#ccc';
+                document.getElementById('message').style.borderColor = '#ccc';
+                emailError.textContent = 'This field must be filled.';
+                subjectError.textContent = '';
+                messageError.textContent = '';
+                emailError.style.display= 'block';
+                emailError.style.color = 'red';
+                submitBtn.disabled = true;
+                loadingSpinner.style.display = 'none';
+                submitText.style.display = 'block';
+                return;
+            }
+            else if(!subjectInput){
+                nameError.textContent = '';
+                document.getElementById('name').style.borderColor = '#ccc';
+                document.getElementById('email').style.borderColor = '#ccc';
+                document.getElementById('subject').style.borderColor = 'red';
+                document.getElementById('message').style.borderColor = '#ccc';
+                emailError.textContent = '';
+                subjectError.textContent = '';
+                subjectError.textContent = 'this field must be filled';
+                subjectError.style.display= 'block';
+                nameError.style.color = 'red';
+                submitBtn.disabled = true;
+                loadingSpinner.style.display = 'none';
+                submitText.style.display = 'block';
+                return;
+            }
+            else if(!messageInput){
+                nameError.textContent = 'This field is needed';
+                document.getElementById('name').style.borderColor = '#ccc';
+                document.getElementById('email').style.borderColor = '#ccc';
+                document.getElementById('subject').style.borderColor = '#ccc';
+                document.getElementById('message').style.borderColor = 'red';
+                emailError.textContent = '';
+                subjectError.textContent = '';
+                messageError.textContent = 'this field must be filled';
+                messageError.style.display= 'block';
+                messageError.style.color = 'red';
+                submitBtn.disabled = true;
+                loadingSpinner.style.display = 'none';
+                submitText.style.display = 'block';
+                return;
+            }
+             else if(messageInput && subjectInput && emailInput && nameInput){
+                submitBtn.disabled = false;
+                loadingSpinner.style.display = 'none';
+                submitText.style.display = 'block';
+                nameError.textContent = '';
+                document.getElementById('name').style.borderColor = '#ccc';
+                document.getElementById('email').style.borderColor = '#ccc';
+                document.getElementById('subject').style.borderColor = '#ccc';
+                document.getElementById('message').style.borderColor = '#ccc';
+                emailError.textContent = '';
+                subjectError.textContent = '';
+                messageError.textContent = '';
+                nameError.style.display= 'none';
+                return;
+            }
+            fetch('http://localhost:2000/api/send',{
+                method: 'POST',
+                headers: {
+                    'Content-Type' : 'application/json',
+                },
+                body: JSON.stringify({
+                    name : nameInput,
+                    email : emailInput,
+                    subject : subjectInput,
+                    message : messageInput,
+                }),
 
-                // Show Success Message
-                alert('Message sent successfully!');
-                contactForm.reset();
-            }, 2000);
-        });
+            })
+            .then(function(response){
+                if(!response.ok){
+                    if(response.status === 500){
+                        throw new Error("Failed to send an email");
+                        done.textContent = "Failed to send an email!";
+                        done.style.display = 'block';
+                        done.style.color = 'red';
+                        setTimeout(function(){
+                            done.style.display = 'none';
+                        },4000)
+                    }
+                }
+                return response.json();
+            })
+            .then(function(data){
+                if(!data.ok){
+                    console.log("Yooooo!!!!");
+                    done.textContent = "Yooooo!!!!";
+                    done.style.display = 'block';
+                    done.style.color = 'red';
+                    setTimeout(function(){
+                        done.style.display = 'none';
+                    },4000)
+                }
+                else{
+                done.textContent = "Message sent successfully!";
+                done.style.display = 'block';
+                done.style.color = 'green';
+                setTimeout(function(){
+                    done.style.display = 'none';
+                },4000)}
+            })
+            .catch(function(error){
+                console.error("An error occured while sending an email!");
+                done.textContent = "An error occured while sending an email";
+                done.style.display = 'block';
+                done.style.color = 'red';
+                setTimeout(function(){
+                    done.style.display = 'none';
+                },4000)
+            })  
+        })
+    })
     </script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
