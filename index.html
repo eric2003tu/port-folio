@@ -679,7 +679,6 @@
                     </div>
                 </div>
                 <form id="submitForm">
-                <div class="contact-form">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" class="form-input" name="name" placeholder="Your Name">
@@ -700,13 +699,12 @@
                         <textarea id="message" rows="5" class="form-input"  name="message" placeholder="Your Message" ></textarea>
                         <p class="error-message" id="message-error"></p>
                     </div>
+                    <p id="done"></p>
                     <button type="submit" class="btn btn-primary" id="submit-btn">
                         <span id="submit-text">Send Message</span>
                         <div class="loading-spinner" id="loading-spinner"></div>
                     </button>
                     
-                </div>
-                <p id="done"></p>
                 </form>
             </div>
         </div>
@@ -766,194 +764,143 @@
         });
 
         // Contact Form Functionality
-        const Form = document.getElementById("submitForm");
-        const contactForm = document.querySelector('.contact-form');
-        const submitBtn = document.getElementById('submit-btn');
-        const submitText = document.getElementById('submit-text');
-        const loadingSpinner = document.getElementById('loading-spinner');
-        const nameError = document.getElementById('name-error');
-        const emailError = document.getElementById('email-error');
-        const subjectError = document.getElementById('subject-error');
-        const messageError = document.getElementById('message-error');
-        const done = document.getElementById('done');
-
+        const form = document.getElementById("submitForm");
+        const submitBtn = document.getElementById("submit-btn");
+        const submitText = document.getElementById("submit-text");
+        const loadingSpinner = document.getElementById("loading-spinner");
+        const nameError = document.getElementById("name-error");
+        const emailError = document.getElementById("email-error");
+        const subjectError = document.getElementById("subject-error");
+        const messageError = document.getElementById("message-error");
+        const done = document.getElementById("done");
+        const emailInputField = document.getElementById("email");
+        
+        emailInputField.addEventListener("input", function () {
+            const emailInput = emailInputField.value.trim();
+            if (!emailInput) {
+                emailError.textContent = "";
+                emailError.style.display = "none";
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput)) {
+                emailError.textContent = "Invalid email";
+                emailError.style.display = "block";
+                emailError.style.color = "red";
+                emailError.style.fontWeight = "bold";
+            } else {
+                emailError.textContent = "";
+                emailError.style.display = "none";
+            }
+        });
+        
         submitBtn.disabled = true;
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('submitForm');
-    const submitBtn = document.getElementById('submit-btn');
-
-    form.addEventListener('input', () => {
-        const nameInputs = document.getElementById('name').value.trim();
-        const emailInputs = document.getElementById('email').value.trim();
-        const subjectInputs = document.getElementById('subject').value.trim();
-        const messageInputs = document.getElementById('message').value.trim();
-
-        if (nameInputs && emailInputs && subjectInputs && messageInputs) {
-            submitBtn.disabled = false;
-        } else {
-            submitBtn.disabled = true;
-        }
-    });
-});
-
-        document.addEventListener('DOMContentLoaded', function() {
-        const Form = document.getElementById("submitForm");
-        Form.addEventListener('submit', function(event){
-            event.preventDefault();
-            const nameInput = document.getElementById('name').value.trim();
-            const emailInput = document.getElementById('email').value.trim();
-            const subjectInput = document.getElementById('subject').value.trim();
-            const messageInput = document.getElementById('message').value.trim();
-            loadingSpinner.style.display = 'block'
-            submitBtn.disabled = true
-            if(loadingSpinner.style.display === 'block'){
-                submitText.style.display = 'none';
-            }
-            else if(loadingSpinner.style.display === 'none'){
-                submitText.style.display = 'block'
-            }
-              if(!nameInput){
-                nameError.textContent = 'This field is needed';
-                document.getElementById('name').style.borderColor = 'red';
-                document.getElementById('email').style.borderColor = '#ccc';
-                document.getElementById('subject').style.borderColor = '#ccc';
-                document.getElementById('message').style.borderColor = '#ccc';
-                emailError.textContent = '';
-                subjectError.textContent = '';
-                messageError.textContent = '';
-                nameError.style.display= 'block';
-                nameError.style.color = 'red';
-                submitBtn.disabled = false;
-                loadingSpinner.style.display = 'none';
-                submitText.style.display = 'block';
-                return;
-            }
-            else if(!emailInput){
-                nameError.textContent = '';
-                document.getElementById('name').style.borderColor = '#ccc';
-                document.getElementById('email').style.borderColor = 'red';
-                document.getElementById('subject').style.borderColor = '#ccc';
-                document.getElementById('message').style.borderColor = '#ccc';
-                emailError.textContent = 'This field must be filled.';
-                subjectError.textContent = '';
-                messageError.textContent = '';
-                emailError.style.display= 'block';
-                emailError.style.color = 'red';
-                submitBtn.disabled = false;
-                loadingSpinner.style.display = 'none';
-                submitText.style.display = 'block';
-                return;
-            }
-            else if(!subjectInput){
-                nameError.textContent = '';
-                document.getElementById('name').style.borderColor = '#ccc';
-                document.getElementById('email').style.borderColor = '#ccc';
-                document.getElementById('subject').style.borderColor = 'red';
-                document.getElementById('message').style.borderColor = '#ccc';
-                emailError.textContent = '';
-                subjectError.textContent = '';
-                subjectError.textContent = 'this field must be filled';
-                subjectError.style.display= 'block';
-                nameError.style.color = 'red';
-                submitBtn.disabled = false;
-                loadingSpinner.style.display = 'none';
-                submitText.style.display = 'block';
-                return;
-            }
-            else if(!messageInput){
-                nameError.textContent = 'This field is needed';
-                document.getElementById('name').style.borderColor = '#ccc';
-                document.getElementById('email').style.borderColor = '#ccc';
-                document.getElementById('subject').style.borderColor = '#ccc';
-                document.getElementById('message').style.borderColor = 'red';
-                emailError.textContent = '';
-                subjectError.textContent = '';
-                messageError.textContent = 'this field must be filled';
-                messageError.style.display= 'block';
-                messageError.style.color = 'red';
-                submitBtn.disabled = false;
-                loadingSpinner.style.display = 'none';
-                submitText.style.display = 'block';
-                return;
-            }
-             else if(messageInput && subjectInput && emailInput && nameInput){
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            form.addEventListener("input", () => {
+                const nameInput = document.getElementById("name").value.trim();
+                const emailInput = document.getElementById("email").value.trim();
+                const subjectInput = document.getElementById("subject").value.trim();
+                const messageInput = document.getElementById("message").value.trim();
+        
+                submitBtn.disabled = !(nameInput && emailInput && subjectInput && messageInput);
+            });
+        });
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+                
+                const nameInput = document.getElementById("name").value.trim();
+                const emailInput = document.getElementById("email").value.trim();
+                const subjectInput = document.getElementById("subject").value.trim();
+                const messageInput = document.getElementById("message").value.trim();
+                
+                if (!nameInput) {
+                    nameError.textContent = "This field is required";
+                    nameError.style.display = "block";
+                    nameError.style.color = "red";
+                    return;
+                } else {
+                    nameError.textContent = "";
+                    nameError.style.display = "none";
+                }
+        
+                if (!emailInput) {
+                    emailError.textContent = "This field is required";
+                    emailError.style.display = "block";
+                    emailError.style.color = "red";
+                    return;
+                }
+        
+                if (!subjectInput) {
+                    subjectError.textContent = "This field is required";
+                    subjectError.style.display = "block";
+                    subjectError.style.color = "red";
+                    return;
+                }
+        
+                if (!messageInput) {
+                    messageError.textContent = "This field is required";
+                    messageError.style.display = "block";
+                    messageError.style.color = "red";
+                    return;
+                }
+        
                 submitBtn.disabled = true;
-                loadingSpinner.style.display = 'true';
-                loadingSpinner.style.color = 'white'
-                submitText.textContent = 'Loading';
-                submitText.style.display = 'block'
-                nameError.textContent = '';
-                document.getElementById('name').style.borderColor = '#ccc';
-                document.getElementById('email').style.borderColor = '#ccc';
-                document.getElementById('subject').style.borderColor = '#ccc';
-                document.getElementById('message').style.borderColor = '#ccc';
-                emailError.textContent = '';
-                subjectError.textContent = '';
-                messageError.textContent = '';
-                nameError.style.display= 'none';
-                return;
-            }
-            fetch('https://backend-qnfm.onrender.com/api/send',{
-                method: 'POST',
-                headers: {
-                    'Content-Type' : 'application/json',
-                },
-                body: JSON.stringify({
-                    name : nameInput,
-                    email : emailInput,
-                    subject : subjectInput,
-                    message : messageInput,
+                loadingSpinner.style.display = "block";
+                submitText.style.display = "none";
+                
+                fetch("https://backend-qnfm.onrender.com/api/send", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        name: nameInput,
+                        email: emailInput,
+                        subject: subjectInput,
+                        message: messageInput,
+                    }),
                 })
+                    .then(function(response){
+                        if (!response.ok) {
+                            console.log("Error code is : ", response.status)
+                            done.textContent = "An error occurred while sending the message.";
+                            done.style.display = "block";
+                            done.style.color = "red";
+                            submitBtn.disabled = false;
+                            throw new Error("Failed to send email");
+                        }
+                        return response.json();
+                    })
+                    .then(function(data){
 
-            })
-            .then(function(response){
-                if(!response.ok){
-                    if(response.status === 500){
-                        done.textContent = "Failed to send an email!";
-                        done.style.display = 'block';
-                        done.style.color = 'red';
-                        loadingSpinner.style.display = 'none';
-                        setTimeout(function(){
-                            done.style.display = 'none';
-                        },4000)
-                        throw new Error("Failed to send an email");
-                    }
-                    loadingSpinner.style.display = ' none';
-                }
-                return response.json();
-            })
-            .then(function(data){
-                if(!data.ok){
-                    console.log("Yooooo!!!!");
-                    done.textContent = "Yooooo!!!!";
-                    done.style.display = 'block';
-                    done.style.color = 'red';
-                    loadingSpinner.style.display = 'none';
-                    setTimeout(function(){
-                        done.style.display = 'none';
-                    },4000)
-                }
-                else{
-                done.textContent = "Message sent successfully!";
-                done.style.display = 'block';
-                done.style.color = 'green';
-                loadingSpinner.style.display = 'none';
-                setTimeout(function(){
-                    done.style.display = 'none';
-                },4000)}
-            })
-            .catch(function(error){
-                console.error("An error occured while sending an email!");
-                done.textContent = "An error occured while sending an email";
-                done.style.display = 'block';
-                done.style.color = 'red';
-                loadingSpinner.style.display = 'none';
-                setTimeout(function(){
-                    done.style.display = 'none';
-                },4000)
-            })  
-        })
-    })
+                        if(data.ok){
+                        done.textContent = "Message sent successfully!";
+                        done.style.display = "block";
+                        done.style.color = "green";
+                        submitBtn.disabled = false;
+                        }
+                        else{
+                            done.textContent = "Invalid data";
+                            done.style.display = "block";
+                            done.style.color = "red";
+                            console.log("Invalid data")
+                            submitBtn.disabled = false;
+                        }
+                    })
+                    .catch(function(error){
+                        console.error("An error occurred while sending the message.", error);
+                        done.textContent = "An error occurred while sending the message.";
+                        done.style.display = "block";
+                        done.style.color = "red";
+                        submitBtn.disabled = false;
+                    })
+                    .finally(() => {
+                        loadingSpinner.style.display = "none";
+                        submitText.style.display = "block";
+                    });
+            });
+        });
+        
     </script>
 </body>
 </html>
