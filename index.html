@@ -445,6 +445,7 @@
             color:  white;
             font-weight: bold;
             cursor: pointer;
+            width: 100%;
         }
     </style>
 </head>
@@ -870,6 +871,7 @@
                             form.reset();
                             setTimeout(function(){
                                 done.style.display = 'none';
+                                submitBtn.disabled = 'true';
                             }, 4000)
                             throw new Error("Failed to send email");
                         }
@@ -884,6 +886,7 @@
                         form.reset();
                         setTimeout(function(){
                             done.style.display = 'none';
+                            submitBtn.disabled = 'true';
                         }, 4000)
                         return;
                     })
@@ -896,6 +899,7 @@
                         form.reset();
                         setTimeout(function(){
                             done.style.display = 'none';
+                            submitBtn.disabled = 'true';
                         }, 4000)
                     })
                     .finally(() => {
