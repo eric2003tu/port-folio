@@ -873,20 +873,11 @@
                     })
                     .then(function(data){
 
-                        if(data.ok){
                         done.textContent = "Message sent successfully!";
                         done.style.display = "block";
                         done.style.color = "green";
                         submitBtn.disabled = false;
                         return;
-                        }
-                        else{
-                            done.textContent = "Invalid data";
-                            done.style.display = "block";
-                            done.style.color = "red";
-                            console.log("Invalid data")
-                            submitBtn.disabled = false;
-                        }
                     })
                     .catch(function(error){
                         console.error("An error occurred while sending the message.", error);
