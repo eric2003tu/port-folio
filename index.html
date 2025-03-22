@@ -7,6 +7,7 @@
  <link rel="apple-touch-icon" sizes="180x180" href="Eric.png">
 <link rel="icon" type="image/png" sizes="32x32" href="Eric.png">
 <link rel="icon" type="image/png" sizes="16x16" href="Eric.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
         :root {
@@ -419,7 +420,7 @@
             section { padding: 4rem 0; }
         }
         .loading-spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
+            border: 4px solid white;
             border-top: 4px solid var(--primary);
             border-radius: 50%;
             width: 30px;
@@ -664,15 +665,15 @@
                         </div>
                     </div>
                     <div class="social-icons">
-                        <a href="https://github.com/TUYISHIMEEriccyber" class="social-icon" target="_blank" style="margin: 8px;">
-                            Github
-                        </a>
-                        <a href="https://linkedin.com/in/tuyishime-eric-66a518273" class="social-icon" target="_blank" style="margin: 8px;">
-                             Linkedin
-                        </a>
-                        <a href="https://twitter.com/yourusername" class="social-icon" target="_blank" style="margin: 8px;">
-                            Twitter
-                        </a>
+    <a href="https://github.com/TUYISHIMEEriccyber" class="social-icon" target="_blank" style="margin: 8px;">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="https://linkedin.com/in/tuyishime-eric-66a518273" class="social-icon" target="_blank" style="margin: 8px;">
+        <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://twitter.com/yourusername" class="social-icon" target="_blank" style="margin: 8px;">
+        <i class="fab fa-twitter"></i>
+    </a>
                     </div>
                 </div>
                 <form id="submitForm">
@@ -699,11 +700,11 @@
                     </div>
                     <button type="submit" class="btn btn-primary" id="submit-btn">
                         <span id="submit-text">Send Message</span>
-                        <div class="loading-spinner" id="loading-spinner" style="color: white;"></div>
-                        <p id="done" style="margin: 20px;">  </p>
+                        <div class="loading-spinner" id="loading-spinner"></div>
                     </button>
                     
                 </div>
+                <p id="done"></p>
                 </form>
             </div>
         </div>
@@ -802,6 +803,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const subjectInput = document.getElementById('subject').value.trim();
             const messageInput = document.getElementById('message').value.trim();
             loadingSpinner.style.display = 'block'
+            submitBtn.disabled = true
             if(loadingSpinner.style.display === 'block'){
                 submitText.style.display = 'none';
             }
@@ -873,9 +875,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
              else if(messageInput && subjectInput && emailInput && nameInput){
-                submitBtn.disabled = false;
+                submitBtn.disabled = true;
                 loadingSpinner.style.display = 'true';
-                submitText.style.display = 'block';
+                loadingSpinner.style.color = 'white'
+                submitText.textContent = 'Loading';
+                submitText.style.display = 'block'
                 nameError.textContent = '';
                 document.getElementById('name').style.borderColor = '#ccc';
                 document.getElementById('email').style.borderColor = '#ccc';
@@ -887,7 +891,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 nameError.style.display= 'none';
                 return;
             }
-            fetch('http://localhost:2000/api/send',{
+            fetch('https://backend-qnfm.onrender.com/api/send',{
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json',
