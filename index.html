@@ -381,7 +381,7 @@
         @media (max-width: 768px) {
             .nav-list {
                 position: absolute;
-                top: 60px;
+                top: 70px;
                 right: 0;
                 width: 60%;
                 height: calc(100vh - 60px);
@@ -394,10 +394,17 @@
                 transform: translateX(100%);
                 transition: transform 0.3s ease-in;
                 box-shadow: var(--shadow);
+                gap: 1.0625rem;
             }
-            .nav-list.active { transform: translateX(0); }
-            .nav-link { margin: 1rem 0; }
-            .burger { display: block; }
+            .nav-list.active { 
+                transform: translateX(0); 
+            }
+            .nav-link { 
+                margin: 1rem 0; 
+            }
+            .burger { 
+                display: block;
+             }
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1rem; }
             .hero-buttons { flex-direction: column; gap: 1rem; }
@@ -551,7 +558,6 @@
             <div class="projects-grid">
                 <!-- Advanced Portfolio Website -->
                 <div class="project-card fade-in">
-                    <img src=" " alt="Advanced Portfolio Website" class="project-img">
                     <div class="project-content">
                         <h3>Advanced Portfolio Website</h3>
                         <p>Designed a professional portfolio showcasing projects, skills, and a multilingual language switcher (English, French, Spanish, Kinyarwanda). Implemented SEO optimization for higher search engine visibility.</p>
@@ -565,7 +571,6 @@
 
                 <!-- Real-Time Messaging Application -->
                 <div class="project-card fade-in">
-                    <img src="" alt="Real-Time Messaging Application" class="project-img">
                     <div class="project-content">
                         <h3>Real-Time Messaging Application</h3>
                         <p>Developed a real-time messaging app with features like user authentication, personalized chats, and typing indicators. Integrated a WebSocket API for seamless real-time communication.</p>
@@ -579,7 +584,6 @@
 
                 <!-- Telecommunications Network Simulator -->
                 <div class="project-card fade-in">
-                    <img src="" alt="Telecommunications Network Simulator" class="project-img">
                     <div class="project-content">
                         <h3>Telecommunications Network Simulator</h3>
                         <p>Designed a multi-layered network topology using Cisco Packet Tracer, implementing QoS, redundancy, and efficient routing protocols. Configured VPNs and firewalls to enhance network security.</p>
@@ -593,7 +597,6 @@
 
                 <!-- Online TV Streaming Platform -->
                 <div class="project-card fade-in">
-                    <img src="" alt="Online TV Streaming Platform" class="project-img">
                     <div class="project-content">
                         <h3>Online TV Streaming Platform</h3>
                         <p>Built an online platform with features for video streaming, user subscriptions, and admin controls. Integrated payment gateway APIs for secure transactions.</p>
@@ -608,7 +611,6 @@
 
                 <!-- AI-Powered Suggestion System -->
                 <div class="project-card fade-in">
-                    <img src="" alt="AI-Powered Suggestion System" class="project-img">
                     <div class="project-content">
                         <h3>AI-Powered Suggestion System</h3>
                         <p>Developed a system for user feedback analysis using machine learning models. Incorporated sentiment analysis to classify and respond to user suggestions automatically.</p>
@@ -623,7 +625,6 @@
 
                 <!-- Gaming App -->
                 <div class="project-card fade-in">
-                    <img src="" alt="Gaming App" class="project-img">
                     <div class="project-content">
                         <h3>Gaming App</h3>
                         <p>Created a gaming app using Unity Hub, designed to be interactive and fun for children.</p>
