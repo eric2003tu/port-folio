@@ -869,7 +869,7 @@
                             submitBtn.disabled = false;
                             form.reset();
                             setTimeout(function(){
-                                done.style.display = non-linear;
+                                done.style.display = 'none';
                             }, 4000)
                             throw new Error("Failed to send email");
                         }
@@ -881,9 +881,9 @@
                         done.style.display = "block";
                         done.style.color = "green";
                         submitBtn.disabled = false;
-c                       form.reset();
+                        form.reset();
                         setTimeout(function(){
-                            done.style.display = non-linear;
+                            done.style.display = 'none';
                         }, 4000)
                         return;
                     })
@@ -895,7 +895,7 @@ c                       form.reset();
                         submitBtn.disabled = false;
                         form.reset();
                         setTimeout(function(){
-                            done.style.display = non-linear;
+                            done.style.display = 'none';
                         }, 4000)
                     })
                     .finally(() => {
