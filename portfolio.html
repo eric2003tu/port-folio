@@ -28,10 +28,11 @@
             line-height: 1.6;
             color: var(--text);
             background-color: var(--light);
+            b
         }
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.2rem;
             margin-bottom: 1rem;
             color: var(--dark);
         }
@@ -132,7 +133,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://via.placeholder.com/1200x800') center/cover no-repeat;
+            background: url('') center/cover no-repeat;
             opacity: 0.2;
             z-index: -1;
         }
@@ -657,13 +658,13 @@
                     </div>
                     <div class="social-icons">
                         <a href="https://github.com/TUYISHIMEEriccyber" class="social-icon" target="_blank" style="margin: 8px;">
-                            <i class="fab fa-github">Github</i>
+                            Github
                         </a>
                         <a href="https://linkedin.com/in/tuyishime-eric-66a518273" class="social-icon" target="_blank" style="margin: 8px;">
-                            <i class="fab fa-linkedin"> Linkedin</i>
+                             Linkedin
                         </a>
                         <a href="https://twitter.com/yourusername" class="social-icon" target="_blank" style="margin: 8px;">
-                            <i class="fab fa-twitter">Twitter</i>
+                            Twitter
                         </a>
                     </div>
                 </div>
@@ -671,29 +672,29 @@
                 <div class="contact-form">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" class="form-input" placeholder="Your Name">
+                        <input type="text" id="name" class="form-input" name="name" placeholder="Your Name">
                         <p class="error-message" id="name-error"></p>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" class="form-input" placeholder="Your Email">
+                        <input type="email" id="email" class="form-input" name="email" placeholder="Your Email">
                         <p class="error-message" id="email-error"></p>
                     </div>
                     <div class="form-group">
                         <label for="subject">Subject</label>
-                        <input type="text" id="subject" class="form-input" placeholder="Subject">
+                        <input type="text" id="subject" class="form-input" name="subject" placeholder="Subject">
                         <p class="error-message" id="subject-error"></p>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" rows="5" class="form-input" placeholder="Your Message"></textarea>
+                        <textarea id="message" rows="5" class="form-input"  name="message" placeholder="Your Message" ></textarea>
                         <p class="error-message" id="message-error"></p>
                     </div>
                     <button type="submit" class="btn btn-primary" id="submit-btn">
                         <span id="submit-text">Send Message</span>
                         <div class="loading-spinner" id="loading-spinner" style="color: white;"></div>
+                        <p id="done" style="margin: 20px;">  </p>
                     </button>
-                    <p id="done" style="color: green;"></p>
                     
                 </div>
                 </form>
@@ -767,33 +768,23 @@
         const done = document.getElementById('done');
 
         submitBtn.disabled = true;
-        document.addEventListener('DOMContentLoaded', function() {
-        const Form = document.getElementById("submitForm");
-        Form.addEventListener('input', () => {
-            const nameInput = document.getElementById('name').value.trim();
-            const emailInput = document.getElementById('email').value.trim();
-            const subjectInput = document.getElementById('subject').value.trim();
-            const messageInput = document.getElementById('message').value.trim();
-        
-            if (nameInput && emailInput && subjectInput && messageInput) {
-                submitBtn.disabled = false;
-                loadingSpinner.style.display = 'none';
-                submitText.style.display = 'block';
-                nameError.textContent = '';
-                document.getElementById('name').style.borderColor = '#ccc';
-                document.getElementById('email').style.borderColor = '#ccc';
-                document.getElementById('subject').style.borderColor = '#ccc';
-                document.getElementById('message').style.borderColor = '#ccc';
-                emailError.textContent = '';
-                subjectError.textContent = '';
-                messageError.textContent = '';
-                nameError.style.display= 'none';
-            } else if(!messageInput || !subjectInput || !emailInput || !nameInput) {
-                submitBtn.disabled = true;
-                loadingSpinner.style.display = 'none';
-                submitText.style.display = 'block';
-            }
-        });})
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('submitForm');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('input', () => {
+        const nameInputs = document.getElementById('name').value.trim();
+        const emailInputs = document.getElementById('email').value.trim();
+        const subjectInputs = document.getElementById('subject').value.trim();
+        const messageInputs = document.getElementById('message').value.trim();
+
+        if (nameInputs && emailInputs && subjectInputs && messageInputs) {
+            submitBtn.disabled = false;
+        } else {
+            submitBtn.disabled = true;
+        }
+    });
+});
 
         document.addEventListener('DOMContentLoaded', function() {
         const Form = document.getElementById("submitForm");
@@ -803,21 +794,14 @@
             const emailInput = document.getElementById('email').value.trim();
             const subjectInput = document.getElementById('subject').value.trim();
             const messageInput = document.getElementById('message').value.trim();
-            const done = document.getElementById('done');
-            loadingSpinner.style.display = 'block';
-            if(submitText.style.display === 'block'){
-                loadingSpinner.style.display = 'none';
-                submitBtn.disabled = true;
+            loadingSpinner.style.display = 'block'
+            if(loadingSpinner.style.display === 'block'){
+                submitText.style.display = 'none';
             }
-            else if(submitText.style.display == 'none'){
-                loadingSpinner.style.display = 'none';
-                submitBtn.disabled = false;
+            else if(loadingSpinner.style.display === 'none'){
+                submitText.style.display = 'block'
             }
-            else if(submitBtn.disabled === false){
-                loadingSpinner.style.display = 'none';
-                submitText.style.display = 'block';
-            }
-             if(!nameInput){
+              if(!nameInput){
                 nameError.textContent = 'This field is needed';
                 document.getElementById('name').style.borderColor = 'red';
                 document.getElementById('email').style.borderColor = '#ccc';
@@ -828,7 +812,7 @@
                 messageError.textContent = '';
                 nameError.style.display= 'block';
                 nameError.style.color = 'red';
-                submitBtn.disabled = true;
+                submitBtn.disabled = false;
                 loadingSpinner.style.display = 'none';
                 submitText.style.display = 'block';
                 return;
@@ -844,7 +828,7 @@
                 messageError.textContent = '';
                 emailError.style.display= 'block';
                 emailError.style.color = 'red';
-                submitBtn.disabled = true;
+                submitBtn.disabled = false;
                 loadingSpinner.style.display = 'none';
                 submitText.style.display = 'block';
                 return;
@@ -860,7 +844,7 @@
                 subjectError.textContent = 'this field must be filled';
                 subjectError.style.display= 'block';
                 nameError.style.color = 'red';
-                submitBtn.disabled = true;
+                submitBtn.disabled = false;
                 loadingSpinner.style.display = 'none';
                 submitText.style.display = 'block';
                 return;
@@ -876,14 +860,14 @@
                 messageError.textContent = 'this field must be filled';
                 messageError.style.display= 'block';
                 messageError.style.color = 'red';
-                submitBtn.disabled = true;
+                submitBtn.disabled = false;
                 loadingSpinner.style.display = 'none';
                 submitText.style.display = 'block';
                 return;
             }
              else if(messageInput && subjectInput && emailInput && nameInput){
                 submitBtn.disabled = false;
-                loadingSpinner.style.display = 'none';
+                loadingSpinner.style.display = 'true';
                 submitText.style.display = 'block';
                 nameError.textContent = '';
                 document.getElementById('name').style.borderColor = '#ccc';
@@ -906,20 +890,22 @@
                     email : emailInput,
                     subject : subjectInput,
                     message : messageInput,
-                }),
+                })
 
             })
             .then(function(response){
                 if(!response.ok){
                     if(response.status === 500){
-                        throw new Error("Failed to send an email");
                         done.textContent = "Failed to send an email!";
                         done.style.display = 'block';
                         done.style.color = 'red';
+                        loadingSpinner.style.display = 'none';
                         setTimeout(function(){
                             done.style.display = 'none';
                         },4000)
+                        throw new Error("Failed to send an email");
                     }
+                    loadingSpinner.style.display = ' none';
                 }
                 return response.json();
             })
@@ -929,6 +915,7 @@
                     done.textContent = "Yooooo!!!!";
                     done.style.display = 'block';
                     done.style.color = 'red';
+                    loadingSpinner.style.display = 'none';
                     setTimeout(function(){
                         done.style.display = 'none';
                     },4000)
@@ -937,6 +924,7 @@
                 done.textContent = "Message sent successfully!";
                 done.style.display = 'block';
                 done.style.color = 'green';
+                loadingSpinner.style.display = 'none';
                 setTimeout(function(){
                     done.style.display = 'none';
                 },4000)}
@@ -946,6 +934,7 @@
                 done.textContent = "An error occured while sending an email";
                 done.style.display = 'block';
                 done.style.color = 'red';
+                loadingSpinner.style.display = 'none';
                 setTimeout(function(){
                     done.style.display = 'none';
                 },4000)
