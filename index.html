@@ -126,7 +126,7 @@
             display: flex;
             align-items: center;
             position: relative;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(139, 92, 246, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 27%, rgba(139, 92, 246, 0.9) 100%);
             color: gray;
             overflow: hidden;
             padding: 2rem;
@@ -775,6 +775,9 @@
         const messageError = document.getElementById("message-error");
         const done = document.getElementById("done");
         const emailInputField = document.getElementById("email");
+        const nameInputField = document.getElementById("name");
+        const subjectInputfield = document.getElementById("subject");
+        const messageInputField = document.getElementById("message");
         
         emailInputField.addEventListener("input", function () {
             const emailInput = emailInputField.value.trim();
@@ -786,10 +789,65 @@
                 emailError.style.display = "block";
                 emailError.style.color = "red";
                 emailError.style.fontWeight = "bold";
-            } else {
-                emailError.textContent = "";
-                emailError.style.display = "none";
+
+            } 
+            else if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput)){
+                emailError.textContent = "Email is valid";
+                emailError.style.display = "block";
+                emailError.style.color = "green";
+                emailError.style.fontWeight = "bold";
             }
+        });
+        nameInputField.addEventListener("input", function () {
+            const nameInputtt = nameInputField.value.trim();
+             if ((nameInputtt.length) >= 2) {
+                nameError.textContent = "Your name is valid";
+                nameError.style.display = "block";
+                nameError.style.color = "green";
+                nameError.style.fontWeight = "bold";
+
+            } 
+            else if ((nameInputtt.length) < 2 || !nameInputtt) {
+                nameError.textContent = "invalid name";
+                nameError.style.display = "block";
+                nameError.style.color = "red";
+                nameError.style.fontWeight = "bold";
+
+            } 
+        });
+        subjectInputfield.addEventListener("input", function () {
+            const subjectInputtt = subjectInputfield.value.trim();
+             if ((subjectInputtt.length) >= 2) {
+                subjectError.textContent = "Your subject is valid";
+                subjectError.style.display = "block";
+                subjectError.style.color = "green";
+                subjectError.style.fontWeight = "bold";
+
+            } 
+            else if ((subjectInputtt.length) < 4 || !subjectInputtt) {
+                subjectError.textContent = "invalid subject";
+                subjectError.style.display = "block";
+                subjectError.style.color = "red";
+                subjectError.style.fontWeight = "bold";
+
+            } 
+        });
+        messageInputField.addEventListener("input", function () {
+            const messageInputtt = messageInputField.value.trim();
+             if ((messageInputtt.length) >= 2) {
+                messageError.textContent = "Your message is full";
+                messageError.style.display = "block";
+                messageError.style.color = "green";
+                messageError.style.fontWeight = "bold";
+
+            } 
+            else if ((messageInputtt.length) < 4 || !messageInputtt) {
+                messageError.textContent = "invalid message";
+                messageError.style.display = "block";
+                messageError.style.color = "red";
+                messageError.style.fontWeight = "bold";
+
+            } 
         });
         
         submitBtn.disabled = true;
@@ -868,6 +926,10 @@
                             done.style.display = "block";
                             done.style.color = "red";
                             submitBtn.disabled = false;
+                            emailError.textContent  = ''
+                            nameError.textContent = ''
+                            subjectError.textContent = ''
+                            messageError.textContent = ''
                             form.reset();
                             setTimeout(function(){
                                 done.style.display = 'none';
@@ -883,6 +945,10 @@
                         done.style.display = "block";
                         done.style.color = "green";
                         submitBtn.disabled = false;
+                        emailError.textContent  = ''
+                        nameError.textContent = ''
+                        subjectError.textContent = ''
+                        messageError.textContent = ''
                         form.reset();
                         setTimeout(function(){
                             done.style.display = 'none';
@@ -896,6 +962,10 @@
                         done.style.display = "block";
                         done.style.color = "red";
                         submitBtn.disabled = false;
+                        emailError.textContent  = ''
+                        nameError.textContent = ''
+                        subjectError.textContent = ''
+                        messageError.textContent = ''
                         form.reset();
                         setTimeout(function(){
                             done.style.display = 'none';
