@@ -782,8 +782,10 @@
         emailInputField.addEventListener("input", function () {
             const emailInput = emailInputField.value.trim();
             if (!emailInput) {
-                emailError.textContent = "";
-                emailError.style.display = "none";
+                emailError.textContent = "Email can not be empty";
+                emailError.style.display = "block";
+                emailError.style.color = "red";
+                emailError.style.fontWeight = "bold";
             } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput)) {
                 emailError.textContent = "Invalid email";
                 emailError.style.display = "block";
@@ -807,13 +809,19 @@
                 nameError.style.fontWeight = "bold";
 
             } 
-            else if ((nameInputtt.length) < 2 || !nameInputtt) {
+            else if ((nameInputtt.length) < 2) {
                 nameError.textContent = "invalid name";
                 nameError.style.display = "block";
                 nameError.style.color = "red";
                 nameError.style.fontWeight = "bold";
 
             } 
+            else if(!nameInputtt){
+                nameError.textContent = "name can not be empty";
+                nameError.style.display = "block";
+                nameError.style.color = "red";
+                nameError.style.fontWeight = "bold";
+            }
         });
         subjectInputfield.addEventListener("input", function () {
             const subjectInputtt = subjectInputfield.value.trim();
@@ -824,13 +832,19 @@
                 subjectError.style.fontWeight = "bold";
 
             } 
-            else if ((subjectInputtt.length) < 4 || !subjectInputtt) {
+            else if ((subjectInputtt.length) < 4 ) {
                 subjectError.textContent = "invalid subject";
                 subjectError.style.display = "block";
                 subjectError.style.color = "red";
                 subjectError.style.fontWeight = "bold";
 
             } 
+            else if(!subjectInputtt){
+                subjectError.textContent = "The subject can not be empty";
+                subjectError.style.display = "block";
+                subjectError.style.color = "red";
+                subjectError.style.fontWeight = "bold";
+            }
         });
         messageInputField.addEventListener("input", function () {
             const messageInputtt = messageInputField.value.trim();
@@ -841,13 +855,19 @@
                 messageError.style.fontWeight = "bold";
 
             } 
-            else if ((messageInputtt.length) < 4 || !messageInputtt) {
+            else if ((messageInputtt.length) < 4) {
                 messageError.textContent = "invalid message";
                 messageError.style.display = "block";
                 messageError.style.color = "red";
                 messageError.style.fontWeight = "bold";
 
             } 
+            else if(!messageInputtt){
+                messageError.textContent = "Message ca not be empty";
+                messageError.style.display = "block";
+                messageError.style.color = "red";
+                messageError.style.fontWeight = "bold";
+            }
         });
         
         submitBtn.disabled = true;
