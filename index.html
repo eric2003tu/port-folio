@@ -790,12 +790,14 @@
                 emailError.textContent = "Email can not be empty";
                 emailError.style.display = "block";
                 emailError.style.color = "red";
+                document.getElementById("email").style.borderColor = 'red';
                 emailError.style.fontWeight = "bold";
             } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput)) {
                 emailError.textContent = "Invalid email";
                 emailError.style.display = "block";
                 emailError.style.color = "red";
                 emailError.style.fontWeight = "bold";
+                document.getElementById("email").style.borderColor = 'red';
 
             } 
             else if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput)){
@@ -803,6 +805,7 @@
                 emailError.style.display = "block";
                 emailError.style.color = "green";
                 emailError.style.fontWeight = "bold";
+                document.getElementById("email").style.borderColor = '#ccc';
             }
         });
         nameInputField.addEventListener("input", function () {
@@ -812,6 +815,7 @@
                 nameError.style.display = "block";
                 nameError.style.color = "green";
                 nameError.style.fontWeight = "bold";
+                document.getElementById("name").style.borderColor = '#ccc';
 
             } 
             else if ((nameInputtt.length) < 2 && (nameInputtt.length) >0) {
@@ -819,6 +823,7 @@
                 nameError.style.display = "block";
                 nameError.style.color = "red";
                 nameError.style.fontWeight = "bold";
+                document.getElementById("name").style.borderColor = 'red';
 
             } 
             else if(!nameInputtt){
@@ -826,6 +831,7 @@
                 nameError.style.display = "block";
                 nameError.style.color = "red";
                 nameError.style.fontWeight = "bold";
+                document.getElementById("name").style.borderColor = 'red';
             }
         });
         subjectInputfield.addEventListener("input", function () {
@@ -835,6 +841,7 @@
                 subjectError.style.display = "block";
                 subjectError.style.color = "green";
                 subjectError.style.fontWeight = "bold";
+                document.getElementById('subject').style.borderColor = '#ccc'
 
             } 
             else if ((subjectInputtt.length) < 4 && (subjectInputtt.length) > 0 ) {
@@ -842,6 +849,7 @@
                 subjectError.style.display = "block";
                 subjectError.style.color = "red";
                 subjectError.style.fontWeight = "bold";
+                document.getElementById('subject').style.borderColor = 'red'
 
             } 
             else if(!subjectInputtt){
@@ -849,6 +857,7 @@
                 subjectError.style.display = "block";
                 subjectError.style.color = "red";
                 subjectError.style.fontWeight = "bold";
+                document.getElementById('subject').style.borderColor = 'red'
             }
         });
         messageInputField.addEventListener("input", function () {
@@ -858,13 +867,15 @@
                 messageError.style.display = "block";
                 messageError.style.color = "green";
                 messageError.style.fontWeight = "bold";
+                document.getElementById('message').style.borderColor = '#ccc'
 
             } 
-            else if ((messageInputtt.length) < 4 && (messageInputtt.length) > 0) {
+            else if ((messageInputtt.length) <= 5 && ((messageInputtt.length) > 0)) {
                 messageError.textContent = "invalid message";
                 messageError.style.display = "block";
                 messageError.style.color = "red";
                 messageError.style.fontWeight = "bold";
+                document.getElementById('message').style.borderColor = 'red'
 
             } 
             else if(!messageInputtt){
@@ -872,6 +883,7 @@
                 messageError.style.display = "block";
                 messageError.style.color = "red";
                 messageError.style.fontWeight = "bold";
+                document.getElementById('message').style.borderColor = 'red'
             }
         });
         
